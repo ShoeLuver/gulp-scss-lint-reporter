@@ -60,17 +60,17 @@ Default: `"scssreport.log"`
 
 The filename to write output from scsslint. When linting is successfull, the file is not created.
 
-Type: 'aligned'
-Default: false
+Type: `aligned`
+Default: `false`
 
-Normally 1 tab is placed between the [LINE,CHAR] and the (ERRORTYPE) entires creating something like;
-*[12,14] (SelectorFormat) Selector `fakeSelectorThing` should be written in lowercase with hyphens*
-*[23,1]	  (SingleLinePerSelector) Each selector in a comma sequence should be on its own line*
-
-if this option is set to true then they are tabbed evenly to create visual columns;
-*[12,14]  (SelectorFormat)          Selector `fakeSelectorThing` should be written in lowercase with hyphens*
-*[23,1]	  (SingleLinePerSelector)   Each selector in a comma sequence should be on its own line*
-
+Normally 1 tab is placed between the [LINE,CHAR] and the (ERRORTYPE) entires creating something like;<br>
+*[12,14] (SelectorFormat) Selector 'fakeSelectorThing' should be written in lowercase with hyphens*<br>
+*[23,1]	  (SingleLinePerSelector) Each selector in a comma sequence should be on its own line*<br>
+<br>
+if this option is set to true then they are tabbed evenly to create visual columns;<br>
+*[12,14]  (SelectorFormat)          Selector 'fakeSelectorThing' should be written in lowercase with hyphens*<br>
+*[23,1]	  (SingleLinePerSelector)   Each selector in a comma sequence should be on its own line*<br>
+<br>
 ## LICENSE
 
 The MIT License (MIT)
