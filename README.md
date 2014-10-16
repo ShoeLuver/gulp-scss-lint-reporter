@@ -64,14 +64,16 @@ Default: `false`
 
 Normally 1 tab is placed between the [LINE,CHAR] and the (ERRORTYPE) entires creating something like;<br>
 ```
-[12,14] (SelectorFormat) Selector 'fakeSelectorThing' should be written in lowercase with hyphens
-[23,1]	(SingleLinePerSelector) Each selector in a comma sequence should be on its own line
+[12,14]	(SelectorFormat)	Selector 'fakeSelectorThing' should be written in lowercase with hyphens
+[23,1]	(SingleLinePerSelector)	Each selector in a comma sequence should be on its own line
+[180,19]	(EmptyLineBetweenBlocks)	Rule declaration should be followed by an empty line
 ```
 <br>
 if this option is set to true then they are tabbed evenly to create visual columns;<br>
 ```
-[12,14]  (SelectorFormat)          Selector 'fakeSelectorThing' should be written in lowercase with hyphens
-[23,1]	 (SingleLinePerSelector)   Each selector in a comma sequence should be on its own line
+[12,14]		(SelectorFormat)		Selector 'fakeSelectorThing' should be written in lowercase with hyphens
+[23,1]		(SingleLinePerSelector)		Each selector in a comma sequence should be on its own line
+[180,19]	(EmptyLineBetweenBlocks)	Rule declaration should be followed by an empty line
 ```
 <br>
 ## LICENSE
