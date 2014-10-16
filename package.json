@@ -1,0 +1,33 @@
+{
+  "name": "gulp-scss-lint-reporter",
+  "version": "0.0.1",
+  "description": "A simple reporter for gulp-scss-lint that takes a jsonized version of its output and make it human readable.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShoeLuver/gulp-scss-lint-reporter"
+  },
+  "keywords": [
+    "gulp",
+    "scss",
+	"lint",
+    "reporter"
+  ],
+  "author": "Eric Butler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShoeLuver/gulp-scss-lint-reporter/issues"
+  },
+  "homepage": "https://github.com/ShoeLuver/gulp-scss-lint-reporter",
+  "peerDependencies": {
+    "gulp": "*",
+    "gulp-scss-lint": "*",
+	"gulp-xml2js": "*"
+  },
+  "dependencies": {
+	"through2": "~0.6.3"
+  },
+  "devDependencies": {
+    "gulp-scss-lint": "~0.1.4"
+  }
+}
