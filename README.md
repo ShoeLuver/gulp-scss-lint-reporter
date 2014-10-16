@@ -16,7 +16,7 @@
 
 ## Install
 
-    Add "gulp-scss-lint-reporter": "https://github.com/ShoeLuver/gulp-scss-lint-reporter/tarball/{latest hash}" to your package.json dependencies.
+    Add "gulp-scss-lint-reporter": "https://github.com/ShoeLuver/gulp-scss-lint-reporter/tarball/5a721348f3a98e67e879b0b2b6347ea3937ee4fc" to your package.json dependencies.
     npm install from your package.json directory.
 
 ## Usage
