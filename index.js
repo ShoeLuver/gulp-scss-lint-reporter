@@ -62,5 +62,6 @@ module.exports = function( oOptions ) {
 			}
 		}
 		wrStream.write( asOutput.join('\n') );
+		cb(null, fFile);
 	} );
 };
