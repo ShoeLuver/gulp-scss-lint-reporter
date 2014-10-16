@@ -31,8 +31,7 @@ var lintReadable = require('gulp-scss-lint-reporter');
 gulp.task( 'validateSCSS', function() {
 	return gulp.src(paths.someSCSS)
 				.pipe(scssLint({
-					reporterOutput: './reports/scssreport.xml',
-					maxBuffer: 614400 * 4
+					reporterOutput: './reports/scssreport.xml'
 				}));
 });
 // Turn xml scss lint report into JSON
@@ -50,7 +49,7 @@ gulp.task( 'prettySCSSReport', ['jsonSCSSReport'], function() {
 				}));
 });
 ```
-
+'\> gulp prettySCSSReport'<br>
 ## Options
 
 Plugin options:
@@ -64,18 +63,20 @@ Type: `aligned`
 Default: `false`
 
 Normally 1 tab is placed between the [LINE,CHAR] and the (ERRORTYPE) entires creating something like;<br>
-*[12,14] (SelectorFormat) Selector 'fakeSelectorThing' should be written in lowercase with hyphens*<br>
-*[23,1]	  (SingleLinePerSelector) Each selector in a comma sequence should be on its own line*<br>
+```
+*\[12,14\] (SelectorFormat) Selector 'fakeSelectorThing' should be written in lowercase with hyphens*<br>
+*\[23,1\]	  (SingleLinePerSelector) Each selector in a comma sequence should be on its own line*<br>
+```
 <br>
 if this option is set to true then they are tabbed evenly to create visual columns;<br>
-*[12,14]  (SelectorFormat)          Selector 'fakeSelectorThing' should be written in lowercase with hyphens*<br>
-*[23,1]	  (SingleLinePerSelector)   Each selector in a comma sequence should be on its own line*<br>
+```
+*\[12,14\]  (SelectorFormat)          Selector 'fakeSelectorThing' should be written in lowercase with hyphens*<br>
+*\[23,1\]	  (SingleLinePerSelector)   Each selector in a comma sequence should be on its own line*<br>
+```
 <br>
 ## LICENSE
 
 The MIT License (MIT)
-
-Copyright (c) 2014 Spencer Alger
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
