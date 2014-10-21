@@ -5,23 +5,16 @@ var sDefaultFilename = 'scssreport.log';
 var wrStream = null;
 var sFilename = null;
 var bAligned = false;
+var n = 0;
 
 module.exports = function( oOptions ) {
 	oOptions = oOptions || {};
 	oOptions.filename = oOptions.filename || sDefaultFilename;
 	bAligned = oOptions.aligned || bAligned;
 
-	console.log( "gulp-scss-lint-reporter: Writing log to: " + oOptions.filename );
-	if( wrStream && sFilename !== oOptions.filename ) {
-		wrStream.end();
-		wrStream = null;
-	}
-	if( !wrStream ) {
-		wrStream = fs.createWriteStream( oOptions.filename );
-		sFilename = oOptions.filename;
-	}
-
 	return through.obj( function( fFile, enc, cb ) {
+		var thisStream = fs.createWriteStream( oOptions.filename );
+		var thisAligned = bAligned;
 		if( fFile.isNull() ) {
 			console.log( "gulp-scss-lint-reporter: Nothing to convert in json file." );
 			return;
@@ -36,11 +29,10 @@ module.exports = function( oOptions ) {
 			return;
 		}
 
+		console.log( "gulp-scss-lint-reporter: Writing log to: " + oOptions.filename );
 		var asOutput = [];
 		asOutput.push('LEGEND: [LINE,CHARACTER] (ERROR TYPE) DESCRIPTION');
 		for( var filename in jsonObj ) {
-			console.log(filename);
-			console.log(jsonObj[filename]);
 			var sCurrentFile = filename;
 			var aoIssues = jsonObj[sCurrentFile];
 			asOutput.push( aoIssues.length + " errors found in: " + sCurrentFile );
@@ -49,23 +41,22 @@ module.exports = function( oOptions ) {
 			var sFirstTabs = '\t';
 			var sSecondTabs = '\t';
 			for( var oIssue in aoIssues ) {
-				console.log(oIssue);
 				// Reset tabs
 				sFirstTabs = '\t';
 				sSecondTabs = '\t';
 				// Calulate tabs for aligning
 				sLocationInfo = '[' + aoIssues[oIssue].line + ',' + aoIssues[oIssue].column + ']';
-				if( bAligned && sLocationInfo.length < 8 ) { sFirstTabs += '\t'; }
+				if( thisAligned && sLocationInfo.length < 8 ) { sFirstTabs += '\t'; }
 				var sErrorType = '(' + aoIssues[oIssue].linter + ')';
 				var iLength = sErrorType.length;
-				while( bAligned && iLength < 24 ) {
+				while( thisAligned && iLength < 24 ) {
 					iLength += 4;
 					sSecondTabs += '\t';
 				}
 				asOutput.push( '\t' + sLocationInfo + sFirstTabs + sErrorType + sSecondTabs + aoIssues[oIssue].reason );
 			}
 		}
-		wrStream.write( asOutput.join('\n') );
+		thisStream.write( asOutput.join('\n') );
 		cb(null, fFile);
 	} );
 };
