@@ -38,27 +38,31 @@ module.exports = function( oOptions ) {
 
 		var asOutput = [];
 		asOutput.push('LEGEND: [LINE,CHARACTER] (ERROR TYPE) DESCRIPTION');
-		for( var a in jsonObj.lint.file ) {
-			var currentFile = jsonObj.lint.file[a];
-			asOutput.push( currentFile.issue.length + " errors found in: " + currentFile.$.name );
+		for( var filename in jsonObj ) {
+			console.log(filename);
+			console.log(jsonObj[filename]);
+			var sCurrentFile = filename;
+			var aoIssues = jsonObj[sCurrentFile];
+			asOutput.push( aoIssues.length + " errors found in: " + sCurrentFile );
+			
 			var sLocationInfo = '';
 			var sFirstTabs = '\t';
 			var sSecondTabs = '\t';
-			for( var b in currentFile.issue ) {
+			for( var oIssue in aoIssues ) {
+				console.log(oIssue);
 				// Reset tabs
 				sFirstTabs = '\t';
 				sSecondTabs = '\t';
 				// Calulate tabs for aligning
-				var currentIssue = currentFile.issue[b];
-				sLocationInfo = '[' + currentIssue.$.line + ',' + currentIssue.$.column + ']';
+				sLocationInfo = '[' + aoIssues[oIssue].line + ',' + aoIssues[oIssue].column + ']';
 				if( bAligned && sLocationInfo.length < 8 ) { sFirstTabs += '\t'; }
-				var sErrorType = '(' + currentIssue.$.linter + ')';
+				var sErrorType = '(' + aoIssues[oIssue].linter + ')';
 				var iLength = sErrorType.length;
 				while( bAligned && iLength < 24 ) {
 					iLength += 4;
 					sSecondTabs += '\t';
 				}
-				asOutput.push( '\t' + sLocationInfo + sFirstTabs + sErrorType + sSecondTabs + currentIssue.$.reason );
+				asOutput.push( '\t' + sLocationInfo + sFirstTabs + sErrorType + sSecondTabs + aoIssues[oIssue].reason );
 			}
 		}
 		wrStream.write( asOutput.join('\n') );
